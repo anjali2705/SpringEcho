@@ -19,19 +19,20 @@ public class Product {
     private double price;
     private String added_on;
     private int category_id;
-    
+    private String productimage;   
  
     public Product() {
     }
 
 
-	public Product(int product_id, String product_name, double price, String added_on, int category_id) {
+	public Product(int product_id, String product_name, double price, String added_on, int category_id, String productimage) {
 		super();
 		this.product_id = product_id;
 		this.product_name = product_name;
 		this.price = price;
 		this.added_on = added_on;
 		this.category_id = category_id;
+		this.productimage = productimage;
 	}
 
 
@@ -82,6 +83,16 @@ public class Product {
 
 	public void setCategory_id(int category_id) {
 		this.category_id = category_id;
+	}
+
+
+	public String getProductimage() {
+		return productimage;
+	}
+
+
+	public void setProductimage(String productimage) {
+		this.productimage = productimage;
 	}
 
 

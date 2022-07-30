@@ -17,6 +17,8 @@ public interface CartService {
 	Boolean checkTotalAmountAgainstCart(double totalAmount,long userId);
 	List<CheckoutCart> getAllCheckoutByUserId(long userId);
 	List<CheckoutCart> saveProductsForCheckout(List<CheckoutCart> tmp)  throws Exception;
+	void save(AddtoCart cart);
+	List<AddtoCart> fetchCartByUserId(Integer id);
 	
 	
 	//CheckOutCart

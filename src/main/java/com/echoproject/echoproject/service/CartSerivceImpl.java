@@ -29,13 +29,14 @@ public class CartSerivceImpl implements CartService {
 	@Override
 	public List<AddtoCart> addCartbyUserIdAndProductId(long productId, long userId,int qty,double price) throws Exception {
 		try {
-			if(addCartRepo.getCartByProductIdAnduserId(userId, productId).isPresent()){
+			if(addCartRepo.addCartbyUserIdAndProductId(userId, productId).isPresent()){
 				throw new Exception("Product is already exist.");
 			}
 			AddtoCart obj = new AddtoCart();
 			obj.setQty(qty);
-			obj.setUser_id(userId);
-			Product pro = proServices.getProductsById(productId);
+			obj.setUser_id((int)userId);
+			Product pro = proServices.getProductById(productId);
+			//System.out.println("Product Id:" + proServices.getProductsById(productId) );
 			obj.setProduct(pro); 
 			//TODO price has to check with qty
 			obj.setPrice(price);
@@ -52,6 +53,11 @@ public class CartSerivceImpl implements CartService {
 	@Override
 	public List<AddtoCart> getCartByUserId(long userId) {
 		return addCartRepo.getCartByuserId(userId);
+	}
+	
+	@Override
+	public List<AddtoCart> fetchCartByUserId(Integer id){
+		 return addCartRepo.fetchCart(id);
 	}
 
 	@Override
@@ -102,6 +108,11 @@ public class CartSerivceImpl implements CartService {
 	public List<AddtoCart> removeAllCartByUserId(long userId) {
 		addCartRepo.deleteAllCartByUserId(userId);
 		return null;
+	}
+
+	@Override
+	public void save(AddtoCart cart) {
+		addCartRepo.save(cart);
 	}
 
 }

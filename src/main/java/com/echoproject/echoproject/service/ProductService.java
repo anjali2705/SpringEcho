@@ -1,6 +1,7 @@
 package com.echoproject.echoproject.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
  
@@ -35,7 +36,15 @@ public class ProductService {
 		return repo.findAll();
 	}
 
-    public Product getProductsById(long productId) throws Exception {
-		return repo.findById((int) productId).orElseThrow(() ->new Exception("Product is not found"));
+  
+
+	public Product getProductById(long productId) {
+		// TODO Auto-generated method stub
+		return repo.getById((int)productId);
+	}
+
+	public Optional<Product> fetchProductById(Integer id) {
+		// TODO Auto-generated method stub
+		return repo.findById(id);
 	}
 }

@@ -25,16 +25,21 @@ public class AddtoCart {
 	@OneToOne(fetch=FetchType.LAZY)
     @JoinColumn(name = "product_id")
 	Product product;
-	//Long product_id;
+   // Long product_id;
 	int qty;
 	double price;
-	Long user_id;
+	int user_id;
 	@Column(updatable=false, insertable=false)
 	String added_date;
+	int pid;
 	
-	@Transient
-	String productName;
 	
+	public int getPid() {
+		return pid;
+	}
+	public void setPid(int pid) {
+		this.pid = pid;
+	}
 	public int getQty() {
 		return qty;
 	}
@@ -53,10 +58,10 @@ public class AddtoCart {
 	public void setAdded_date(String added_date) {
 		this.added_date = added_date;
 	}
-	 Long getUser_id() {
+	 int getUser_id() {
 		return user_id;
 	}
-	public void setUser_id(Long user_id) {
+	public void setUser_id(Integer user_id) {
 		this.user_id = user_id;
 	}
 	public long getId() {
@@ -72,7 +77,5 @@ public class AddtoCart {
 		this.product = product;
 	}
 
-	public String getProductName() {
-		return product.getProduct_name();
-	}
+	
 }

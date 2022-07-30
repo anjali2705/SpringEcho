@@ -90,6 +90,11 @@ public class User {
 	public void setType(String type) {
 		this.type = type;
 	}
+	public boolean isPresent() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 	
 	
 	

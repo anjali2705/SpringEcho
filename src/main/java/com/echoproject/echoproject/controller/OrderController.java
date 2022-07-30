@@ -15,7 +15,6 @@ import com.echoproject.echoproject.model.AddtoCart;
 import com.echoproject.echoproject.model.CheckoutCart;
 import com.echoproject.echoproject.service.CartService;
 import com.echoproject.echoproject.service.ProductService;
-import com.echoproject.echproject.JWTConfiguration.ShoppingConfiguration;
 import com.echoproject.echproject.controller.RequestPojo.ApiResponse;
 
 
@@ -29,10 +28,7 @@ public class OrderController {
   	public ResponseEntity<?> checkout_order(@RequestBody HashMap<String,String> addCartRequest) {
 		try {
 			String keys[] = {"userId","total_price","pay_type","deliveryAddress"};
-			if(ShoppingConfiguration.validationWithHashMap(keys, addCartRequest)) {
-				
-				
-			}
+			
 			long user_Id = Long.parseLong(addCartRequest.get("userId"));
 			double total_amt = Double.parseDouble(addCartRequest.get("total_price"));
 			if(cartService.checkTotalAmountAgainstCart(total_amt,user_Id)) {
